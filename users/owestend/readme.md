@@ -9,6 +9,7 @@ In moment I only use two different keyboards:
 
 * [XD68](https://github.com/qmk/qmk_firmware/tree/master/keyboards/xd68) a 65% keyboard from [KPRepublic on AliExpress](http://kprepublic.com/products/xiudi-xd68-pcb-65-custom-mechanical-keyboard-support-tkg-tools-underglow-rgb-pcb-programmed-kle-lots-of-layouts)
 * [YD60](https://github.com/qmk/qmk_firmware/tree/master/keyboards/yd60mq) a 60% keyboard with variants of possible layouts form [YDMK](https://de.aliexpress.com/item/32799437588.html)
+* [XD60](https://github.com/qmk/qmk_firmware/tree/master/keyboards/xd60) a 60% keyboard from [KPRepublic on AliExpress](https://de.aliexpress.com/item/32919981329.html)
 
 My layouts define under *qmk_firmware/layouts/community*.
 

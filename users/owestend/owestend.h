@@ -23,10 +23,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 // define layers in this userspace, I use this layers in all my ansi boards
 enum userspace_layers {
-    _BL = 0,    // Base Layer
-    _FL,        // Function Layer
-//  _AL,        // Arrow Layer
-    _CL         // Control Layer
+    _BASE = 0,      // Base Layer
+    _FNC,           // Function Layer
+    _ADJ            // Control Layer
 };
 
 //define user keycodes
@@ -46,4 +45,4 @@ enum userspace_keycodes {
     NEW_SAFE_RANGE
 };
 
-#define LCTL_ESC MT(MOD_LCTL, KC_ESC)
+#define CTL_ESC MT(MOD_LCTL, KC_ESC)

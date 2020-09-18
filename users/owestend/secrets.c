@@ -19,29 +19,29 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #if (__has_include("secrets.h") && !defined(NO_SECRETS))
 #include "secrets.h"
 #else
-const char secret01[] PROGMEM = "test1";
-const char secret02[] PROGMEM = "test2";
-const char secret03[] PROGMEM = "test3";
-const char secret04[] PROGMEM = "test4";
-const char secret05[] PROGMEM = "test5";
-const char secret06[] PROGMEM = "test6";
-const char secret07[] PROGMEM = "test7";
-const char secret08[] PROGMEM = "test8";
-const char secret09[] PROGMEM = "test9";
-const char secret10[] PROGMEM = "test10";
+const char sec01[] PROGMEM = "test1";
+const char sec02[] PROGMEM = "test2";
+const char sec03[] PROGMEM = "test3";
+const char sec04[] PROGMEM = "test4";
+const char sec05[] PROGMEM = "test5";
+const char sec06[] PROGMEM = "test6";
+const char sec07[] PROGMEM = "test7";
+const char sec08[] PROGMEM = "test8";
+const char sec09[] PROGMEM = "test9";
+const char sec10[] PROGMEM = "test10";
 
 const char * const secrets[] PROGMEM =
 {
-  secret01,
-  secret02,
-  secret03,
-  secret04,
-  secret05,
-  secret06,
-  secret07,
-  secret08,
-  secret09,
-  secret10
+  sec01,
+  sec02,
+  sec03,
+  sec04,
+  sec05,
+  sec06,
+  sec07,
+  sec08,
+  sec09,
+  sec10
 };
 #endif
 

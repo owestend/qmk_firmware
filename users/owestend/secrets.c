@@ -47,10 +47,10 @@ const char * const secrets[] PROGMEM =
 
 bool process_record_secrets(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
-    case KC_SEC_1 ... KC_SEC_10: // Secrets!  Externally defined strings, not stored in repo
+    case KC_SEC1 ... KC_SEC0: // Secrets!  Externally defined strings, not stored in repo
       if (!record->event.pressed) {
         clear_oneshot_layer_state(ONESHOT_OTHER_KEY_PRESSED);
-        send_string_with_delay_P((char *)pgm_read_word(&(secrets[keycode - KC_SEC_1])), MACRO_DELAY);
+        send_string_with_delay_P((char *)pgm_read_word(&(secrets[keycode - KC_SEC1])), MACRO_DELAY);
       }
       return false;
       break;

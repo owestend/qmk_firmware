@@ -32,28 +32,28 @@ const char sec10[] PROGMEM = "test10";
 
 const char * const secrets[] PROGMEM =
 {
-  sec01,
-  sec02,
-  sec03,
-  sec04,
-  sec05,
-  sec06,
-  sec07,
-  sec08,
-  sec09,
-  sec10
+    sec01,
+    sec02,
+    sec03,
+    sec04,
+    sec05,
+    sec06,
+    sec07,
+    sec08,
+    sec09,
+    sec10
 };
 #endif
 
 bool process_record_secrets(uint16_t keycode, keyrecord_t *record) {
-  switch (keycode) {
-    case KC_SEC1 ... KC_SEC0: // Secrets!  Externally defined strings, not stored in repo
-      if (!record->event.pressed) {
-        clear_oneshot_layer_state(ONESHOT_OTHER_KEY_PRESSED);
-        send_string_with_delay_P((char *)pgm_read_word(&(secrets[keycode - KC_SEC1])), MACRO_DELAY);
-      }
-      return false;
-      break;
-  }
-  return true;
+    switch (keycode) {
+        case KC_SEC ... KC_SEC_MAX: // Secrets!  Externally defined strings, not stored in repo
+        if (!record->event.pressed) {
+            clear_oneshot_layer_state(ONESHOT_OTHER_KEY_PRESSED);
+            send_string_with_delay_P((char *)pgm_read_word(&(secrets[keycode - KC_SEC])), MACRO_DELAY);
+        }
+        return false;
+        break;
+    }
+    return true;
 }

@@ -21,6 +21,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "quantum.h"
 #include "version.h"
 
+#ifndef SEC_MACROS
+    #define SEC_MACROS  10
+#endif
+
+#if (SEC_MACROS > 0)
+    #define SEC_M(x)    (KC_SEC + x)
+#endif
+
 // define layers in this userspace, I use this layers in all my ansi boards
 enum userspace_layers {
     _BASE = 0,      // Base Layer
@@ -34,16 +42,8 @@ enum userspace_layers {
 enum userspace_keycodes {
     KC_VRSN = SAFE_RANGE,
     KC_MAKE,
-    KC_SEC1,
-    KC_SEC2,
-    KC_SEC3,
-    KC_SEC4,
-    KC_SEC5,
-    KC_SEC6,
-    KC_SEC7,
-    KC_SEC8,
-    KC_SEC9,
-    KC_SEC0,
+    KC_SEC,
+    KC_SEC_MAX = KC_SEC + SEC_MACROS - 1,
     NEW_SAFE_RANGE
 };
 

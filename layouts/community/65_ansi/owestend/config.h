@@ -1,5 +1,10 @@
 #include QMK_KEYBOARD_CONFIG_H
 
+#define SPLIT_BS        0
+#define SPLIT_RSHIFT    0
+#define SPC_CCOUNT      0
+#define ARROW_KEYS      1
+
 #define TEMPLATE_TKL( \
     K50,      K52, K53, K54, K55, K56, K57, K58, K59, K5A, K5B, K5C, K5D,   K60, K61, K3E, \
     K00, K01, K02, K03, K04, K05, K06, K07, K08, K09, K0A, K0B, K0C, K0D,   K63, K64, K65, \

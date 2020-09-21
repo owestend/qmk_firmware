@@ -36,8 +36,6 @@ enum userspace_layers {
     _ADJ            // Control Layer
 };
 
-
-
 //define user keycodes
 enum userspace_keycodes {
     KC_VRSN = SAFE_RANGE,
@@ -52,6 +50,7 @@ enum userspace_keycodes {
 #define MO_FNC      MO(_FNC)
 #define MO_ADJ      MO(_ADJ)
 
+// SPACE key definition
 #ifndef SPACE_COUNT
     #define SPACE_COUNT 1
 #endif

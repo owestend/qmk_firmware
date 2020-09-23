@@ -2,7 +2,7 @@
 
 #define SPLIT_BS        0
 #define SPLIT_RSHIFT    0
-#define SPC_CCOUNT      0
+#define SPC_COUNT       1
 #define ARROW_KEYS      1
 
 #define TEMPLATE_TKL( \

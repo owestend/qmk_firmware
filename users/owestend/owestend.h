@@ -30,6 +30,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // define layers in this userspace, I use this layers in all my ansi boards
 enum userspace_layers {
     _BASE = 0,      // Base Layer
+    _GAME,          // Gaming Layer; no fancy features
     _NAV,           // Navigation layer with some vim key bindings
     _FNC,           // Function Layer
     _ADJ            // Control Layer
@@ -51,6 +52,12 @@ enum userspace_keycodes {
 #define MO_ADJ      MO(_ADJ)
 #define MO_RST      MO(_RESET)
 
+#ifdef GAME_LAYER_ENABLE
+    #define TG_GAME TG(_GAME)
+#else
+    #define TG_GAME KC_NO
+#endif
+
 #define KC_SPC1     LT(_NAV,KC_SPC)
 #define KC_SPC2     LT(_NUM,KC_ENT)
 #define KC_SPC3     SH_T(KC_BSPC)
@@ -62,6 +69,10 @@ enum userspace_keycodes {
 #define FN_SPC1     LT(_ADJ,KC_SPC)
 #define FN_SPC2     KC_ENT
 #define FN_SPC3     KC_SPC
+
+#define AD_SPC1     KC_SPC
+#define AD_SPC2     KC_ENT
+#define AD_SPC3     KC_SPC
 
 #define MY_PST      LSFT(KC_INS)
 #define MY_CPY      LCTL(KC_INS)

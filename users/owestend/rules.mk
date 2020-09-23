@@ -38,3 +38,4 @@ ifneq ($(strip $(NO_SECRETS)), yes)
     endif
 endif
 
+GAME_LAYER_ENABLE = yes

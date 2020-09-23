@@ -30,6 +30,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // define layers in this userspace, I use this layers in all my ansi boards
 enum userspace_layers {
     _BASE = 0,      // Base Layer
+    _NAV,           // Navigation layer with some vim key bindings
     _FNC,           // Function Layer
     _ADJ            // Control Layer
 };
@@ -45,62 +46,35 @@ enum userspace_keycodes {
 
 #define CTL_ESC     CTL_T(KC_ESC)
 
+#define MO_NAV      MO(_NAV)
 #define MO_FNC      MO(_FNC)
 #define MO_ADJ      MO(_ADJ)
+#define MO_RST      MO(_RESET)
 
-// SPACE key definition
-#ifndef SPACE_COUNT
-    #define SPACE_COUNT 1
-#endif
-#if (SPACE_COUNT == 1)
-    #define KC_SPC1     KC_SPC      //LT(_NAV, KC_SPC)
-    #define KC_SPC2     XXXXXXX
-    #define KC_SPC3     XXXXXXX
+#define KC_SPC1     LT(_NAV,KC_SPC)
+#define KC_SPC2     LT(_NUM,KC_ENT)
+#define KC_SPC3     SH_T(KC_BSPC)
 
-    #define NV_SPC1     _______
-    #define NV_SPC2     _______
-    #define NV_SPC3     _______
+#define NV_SPC1     KC_SPC
+#define NV_SPC2     KC_ENT
+#define NV_SPC3     KC_SPC
 
-    #define NM_SPC1     _______
-    #define NM_SPC2     _______
-    #define NM_SPC3     _______
-#elif (SPACE_COUNT == 2)
-    #define KC_SPC1     KC_SPC      //LT(_NAV, KC_SPC)
-    #define KC_SPC2     KC_ENT      //LT(_NAV, KC_ENT)
+#define FN_SPC1     LT(_ADJ,KC_SPC)
+#define FN_SPC2     KC_ENT
+#define FN_SPC3     KC_SPC
 
-    #define NV_SPC1     KC_SPC
-    #define NV_SPC2     KC_ENT
-
-    #define NM_SPC1     _______
-    #define NM_SPC2     _______
-
-    #define KC_SPC3     XXXXXXX
-    #define NV_SPC3     _______
-    #define NM_SPC3     _______
-#elif (SPACE_COUNT == 3)
-    #define KC_SPC1     KC_SPC      //LT(_NAV, KC_SPC)
-    #define KC_SPC2     KC_ENT      //LT(_NAV, KC_ENT)
-
-    #define NV_SPC1     KC_SPC
-    #define NV_SPC2     KC_ENT
-
-    #define NM_SPC1     _______
-    #define NM_SPC2     _______
-
-    #define KC_SPC3     XXXXXXX
-    #define NV_SPC3     _______
-    #define NM_SPC3     _______
-#else
-    #error "Unsupported space count:" SPACE_COUNT
-#endif
+#define MY_PST      LSFT(KC_INS)
+#define MY_CPY      LCTL(KC_INS)
+#define MY_WFWD     LCTL(KC_RGHT)
+#define MY_WBKW     LCTL(KC_LEFT)
 
 #ifndef TEMPLATE
-    #define _X_     KC_NO
+    #define _X_ KC_NO
     #define TEMPLATE( \
         K50, K01, K02, K03, K04, K05, K06, K07, K08, K09, K0A, K0B, K0C, K1D, K00, \
         K10, K11, K12, K13, K14, K15, K16, K17, K18, K19, K1A, K1B, K1C, K0D,      \
         K20, K21, K22, K23, K24, K25, K26, K27, K28, K29, K2A, K2B,      K2D,      \
-        K30, K32, K33, K34, K35, K36, K37, K38, K39, K3A, K3B,      K3D, K3E,      \
+        K30,      K32, K33, K34, K35, K36, K37, K38, K39, K3A, K3B,      K3D, K3E, \
         K40, K41, K42,           K45, K46, K47,           K4A, K4B, K4C, K4D       \
     ) TEMPLATE_TKL( \
         K50,      _X_, _X_, _X_, _X_, _X_, _X_, _X_, _X_, _X_, _X_, _X_, _X_,   _X_, _X_, K3E, \
@@ -108,7 +82,7 @@ enum userspace_keycodes {
         K10, K11, K12, K13, K14, K15, K16, K17, K18, K19, K1A, K1B, K1C, K1D,   _X_, _X_, _X_, \
         K20, K21, K22, K23, K24, K25, K26, K27, K28, K29, K2A, K2B,      K2D,                  \
         K30,      K32, K33, K34, K35, K36, K37, K38, K39, K3A, K3B,      K3D,        _X_,      \
-        K40, K41, K42,           K45, K46, K47,           K4A, K4B, K4C, K4D,   _X_, _X_, _X_, \
+        K40, K41, K42,           K45, K46, K47,           K4A, K4B, K4C, K4D,   _X_, _X_, _X_  \
     )
 #endif
 
@@ -124,7 +98,8 @@ enum userspace_keycodes {
         K50, K01, K02, K03, K04, K05, K06, K07, K08, K09, K0A, K0B, K0C, K1D, K00, \
         K10, K11, K12, K13, K14, K15, K16, K17, K18, K19, K1A, K1B, K1C, K0D,      \
         K20, K21, K22, K23, K24, K25, K26, K27, K28, K29, K2A, K2B,      K2D,      \
-        K30, K32, K33, K34, K35, K36, K37, K38, K39, K3A, K3B,      K3D, K3E,      \
-        K40, K41, K42,           K45, K46, K47,           K4A, K4B, K4C, K4D,      \
+        K30,      K32, K33, K34, K35, K36, K37, K38, K39, K3A, K3B,      K3D, K3E, \
+        K40, K41, K42,           K45, K46, K47,           K4A, K4B, K4C, K4D       \
     )
 #endif
+

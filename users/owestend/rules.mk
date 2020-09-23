@@ -22,6 +22,7 @@ BACKLIGHT_ENABLE = no      # Dissable keyboard backlight functionality
 RGBLIGHT_ENABLE = no       # Dissable keyboard RGB underglow
 
 ifeq ($(strip $(KEYBOARD)), xd68)
+	LINK_TIME_OPTIMIZATION_ENABLE
 endif
 
 SRC += 	owestend.c \

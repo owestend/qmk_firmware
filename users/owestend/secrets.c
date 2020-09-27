@@ -30,7 +30,7 @@ const char sec08[] PROGMEM = "test8";
 const char sec09[] PROGMEM = "test9";
 const char sec10[] PROGMEM = "test10";
 
-const char * const secrets[] PROGMEM =
+const char * const secrets[] =
 {
     sec01,
     sec02,
@@ -50,7 +50,7 @@ bool process_record_secrets(uint16_t keycode, keyrecord_t *record) {
         case KC_SEC ... KC_SEC_MAX: // Secrets!  Externally defined strings, not stored in repo
         if (!record->event.pressed) {
             clear_oneshot_layer_state(ONESHOT_OTHER_KEY_PRESSED);
-            send_string_with_delay_P((char *)pgm_read_word(&(secrets[keycode - KC_SEC])), MACRO_DELAY);
+            send_string_with_delay_P(secrets[keycode - KC_SEC], MACRO_DELAY);
         }
         return false;
         break;

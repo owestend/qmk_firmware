@@ -1,3 +1,7 @@
+# Global configurations
+#
+####
+
 # Enable Bootmagic Lite to consistently reset to bootloader and clear EEPROM.
 BOOTMAGIC_ENABLE = lite
 
@@ -18,15 +22,30 @@ MOUSEKEY_ENABLE = no
 TERMINAL_ENABLE = no
 SPACE_CADET_ENABLE = no
 
-# Disable all LED functions, cause i don't like it.
-BACKLIGHT_ENABLE = no      # Dissable keyboard backlight functionality
-RGBLIGHT_ENABLE = no       # Dissable keyboard RGB underglow
-
-#ifeq ($(strip $(KEYBOARD)), xd68)
+# Enable link time optimization for AVR
 ifneq ($(PLATFORM), CHIBIOS)
 	LTO_ENABLE = yes
 endif
 
+# Keyboard specific configurations
+#
+####
+
+# XD68
+ifeq ($(strip $(KEYBOARD)), xd68)
+	BACKLIGHT_ENABLE = no		# Dissable keyboard bachlight
+	RGBLIGHT_ENABLE = no		# Dissable keyboard RGB underglow
+endif
+
+# YD60
+ifeq ($(strip $(KEYBOARD)), yd60)
+	BACKLIGHT_ENABLE = no		# Dissable keyboard bachlight
+	RGBLIGHT_ENABLE = no		# Dissable keyboard RGB underglow
+endif
+
+# Include user space source files
+#
+#####
 SRC += 	owestend.c \
 		process_records.c
 

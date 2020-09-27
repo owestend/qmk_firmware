@@ -1,4 +1,4 @@
-#include QMK_KEYBOARD_CONFIG_H
+//#include QMK_KEYBOARD_CONFIG_H
 
 #define SPLIT_BS        1
 #define SPLIT_RSHIFT    1

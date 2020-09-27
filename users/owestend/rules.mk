@@ -9,20 +9,22 @@ EXTRAKEY_ENABLE = yes
 # media keys. (It appears that Chrome OS filters out key events from the second
 # USB endpoint's consumer and system control devices unless that endpoint also
 # reports a keyboard or mouse device.)
-NKRO_ENABLE = yes
+NKRO_ENABLE = no
 
 # Disable unused build options on all keyboards.
 COMMAND_ENABLE = no
 CONSOLE_ENABLE = no
 MOUSEKEY_ENABLE = no
 TERMINAL_ENABLE = no
+SPACE_CADET_ENABLE = no
 
 # Disable all LED functions, cause i don't like it.
 BACKLIGHT_ENABLE = no      # Dissable keyboard backlight functionality
 RGBLIGHT_ENABLE = no       # Dissable keyboard RGB underglow
 
-ifeq ($(strip $(KEYBOARD)), xd68)
-#	LINK_TIME_OPTIMIZATION_ENABLE
+#ifeq ($(strip $(KEYBOARD)), xd68)
+ifneq ($(PLATFORM), CHIBIOS)
+	LTO_ENABLE = yes
 endif
 
 SRC += 	owestend.c \
@@ -38,4 +40,4 @@ ifneq ($(strip $(NO_SECRETS)), yes)
     endif
 endif
 
-GAME_LAYER_ENABLE = yes
+#GAME_LAYER_ENABLE = yes

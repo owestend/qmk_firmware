@@ -5,18 +5,22 @@
 ## [Overview](#overview)
 Thanks to [drashna](https://github.com/drashna) and the people in the qmk_firmware/users/ directory :)
 
-In moment I only use two different keyboards:  
+In moment I use following different keyboards:  
 
-* [XD68](https://github.com/qmk/qmk_firmware/tree/master/keyboards/xd68) a 65% keyboard from [KPRepublic on AliExpress](http://kprepublic.com/products/xiudi-xd68-pcb-65-custom-mechanical-keyboard-support-tkg-tools-underglow-rgb-pcb-programmed-kle-lots-of-layouts)
 * [YD60](https://github.com/qmk/qmk_firmware/tree/master/keyboards/yd60mq) a 60% keyboard with variants of possible layouts form [YDMK](https://de.aliexpress.com/item/32799437588.html)
 * [XD60](https://github.com/qmk/qmk_firmware/tree/master/keyboards/xd60) a 60% keyboard from [KPRepublic on AliExpress](https://de.aliexpress.com/item/32919981329.html)
+* [XD68](https://github.com/qmk/qmk_firmware/tree/master/keyboards/xd68) a 65% keyboard from [KPRepublic on AliExpress](http://kprepublic.com/products/xiudi-xd68-pcb-65-custom-mechanical-keyboard-support-tkg-tools-underglow-rgb-pcb-programmed-kle-lots-of-layouts)
 
 My layouts define under *qmk_firmware/layouts/community*.
 
-## [Secret Macros](#secret-macros)
-In different to the implementation of secret macros by [drashna](https://github.com/drashna) I put the strings and also the array to program memory.
+* `LAYOUT_60_ansi`
+* `LAYOUT_60_ansi_split_bs_rshift`
+* `LAYOUT_65_ansi`
 
-### `.gitignore`
+## [Secret Macros](#secret-macros)
+this implimentation of secret macros is taken from [drashna](https://github.com/drashna).In different to his implementation I put the strings and also the array to program memory.
+
+### [`.gitignore`]
 First, you need to exclude to file witch contain the secret macros from git. To exclude the file you need to create a file *.gitignore* to your QMK user space directory with following content:  
 
 ```console
@@ -35,74 +39,74 @@ The key codes will handle by aa function called `process_record_secrets`. This f
 #if (__has_include("secrets.h") && !defined(NO_SECRETS))
 #include "secrets.h"
 #else
-const char secret01[] PROGMEM = "test1";
-const char secret02[] PROGMEM = "test2";
-const char secret03[] PROGMEM = "test3";
-const char secret04[] PROGMEM = "test4";
-const char secret05[] PROGMEM = "test5";
-const char secret06[] PROGMEM = "test6";
-const char secret07[] PROGMEM = "test7";
-const char secret08[] PROGMEM = "test8";
-const char secret09[] PROGMEM = "test9";
-const char secret10[] PROGMEM = "test10";
+const char sec01[] PROGMEM = "test1";
+const char sec02[] PROGMEM = "test2";
+const char sec03[] PROGMEM = "test3";
+const char sec04[] PROGMEM = "test4";
+const char sec05[] PROGMEM = "test5";
+const char sec06[] PROGMEM = "test6";
+const char sec07[] PROGMEM = "test7";
+const char sec08[] PROGMEM = "test8";
+const char sec09[] PROGMEM = "test9";
+const char sec10[] PROGMEM = "test10";
 
-const char * const secrets[] PROGMEM =
+const char * const secrets[] =
 {
-  secret01,
-  secret02,
-  secret03,
-  secret04,
-  secret05,
-  secret06,
-  secret07,
-  secret08,
-  secret09,
-  secret10
+    sec01,
+    sec02,
+    sec03,
+    sec04,
+    sec05,
+    sec06,
+    sec07,
+    sec08,
+    sec09,
+    sec10
 };
 #endif
 
 bool process_record_secrets(uint16_t keycode, keyrecord_t *record) {
-  switch (keycode) {
-    case KC_SEC_1 ... KC_SEC_10: // Secrets!  Externally defined strings, not stored in repo
-      if (!record->event.pressed) {
-        clear_oneshot_layer_state(ONESHOT_OTHER_KEY_PRESSED);
-        send_string_with_delay_P((char *)pgm_read_word(&(secrets[keycode - KC_SEC_1])), MACRO_DELAY);
-      }
-      return false;
-      break;
-  }
-  return true;
+    switch (keycode) {
+        case KC_SEC ... KC_SEC_MAX: // Secrets!  Externally defined strings, not stored in repo
+        if (!record->event.pressed) {
+            clear_oneshot_layer_state(ONESHOT_OTHER_KEY_PRESSED);
+            send_string_with_delay_P(secrets[keycode - KC_SEC], MACRO_DELAY);
+        }
+        return false;
+        break;
+    }
+    return true;
 }
 ```
 
 ### `secrets.h`
 
-The *secrets.h* file contained the secret macros itself. It is very important to exclude this file ever from your git repro. otherwise other Git/Github useres able to see your passwords, or what ever you stroe in your secret macros.  
+The *secrets.h* file contained the secret macros itself. It is very important to exclude this file ever from your git repro (Please see [*.gitignore*](##gitignore)). Otherwise other Git/Github useres able to see your passwords, or what ever you stroe in your secret macros.  
 
 ```c
-const char secret01[] PROGMEM = "secret1";
-const char secret02[] PROGMEM = "secret2";
-const char secret03[] PROGMEM = "secret3";
-const char secret04[] PROGMEM = "secret4";
-const char secret05[] PROGMEM = "secret5";
-const char secret06[] PROGMEM = "secret6";
-const char secret07[] PROGMEM = "secret7";
-const char secret08[] PROGMEM = "secret8";
-const char secret09[] PROGMEM = "secret9";
-const char secret10[] PROGMEM = "secret10";
+const char sec01[] PROGMEM = "test1";
+const char sec02[] PROGMEM = "test2";
+const char sec03[] PROGMEM = "test3";
+const char sec04[] PROGMEM = "test4";
+const char sec05[] PROGMEM = "test5";
+const char sec06[] PROGMEM = "test6";
+const char sec07[] PROGMEM = "test7";
+const char sec08[] PROGMEM = "test8";
+const char sec09[] PROGMEM = "test9";
+const char sec10[] PROGMEM = "test10";
 
-const char * const secrets[] PROGMEM =
+const char * const secrets[] =
 {
-  secret01,
-  secret02,
-  secret03,
-  secret04,
-  secret05,
-  secret06,
-  secret07,
-  secret08,
-  secret09,
-  secret10
+    sec01,
+    sec02,
+    sec03,
+    sec04,
+    sec05,
+    sec06,
+    sec07,
+    sec08,
+    sec09,
+    sec10
 };
 ```
 

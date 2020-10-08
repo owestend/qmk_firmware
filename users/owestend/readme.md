@@ -20,7 +20,7 @@ My layouts define under *qmk_firmware/layouts/community*.
 ## [Secret Macros](#secret-macros)
 this implimentation of secret macros is taken from [drashna](https://github.com/drashna).In different to his implementation I put the strings and also the array to program memory.
 
-### [`.gitignore`]
+### `.gitignore`
 First, you need to exclude to file witch contain the secret macros from git. To exclude the file you need to create a file *.gitignore* to your QMK user space directory with following content:  
 
 ```console

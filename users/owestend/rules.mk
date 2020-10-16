@@ -37,8 +37,8 @@ ifeq ($(strip $(KEYBOARD)), xd68)
 	RGBLIGHT_ENABLE = no		# Dissable keyboard RGB underglow
 endif
 
-# YD60
-ifeq ($(strip $(KEYBOARD)), yd60)
+# YD60MQ
+ifeq ($(findstring yd60mq, $(KEYBOARD)), yd60mq)
 	BACKLIGHT_ENABLE = no		# Dissable keyboard bachlight
 	RGBLIGHT_ENABLE = no		# Dissable keyboard RGB underglow
 endif

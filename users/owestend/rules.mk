@@ -22,14 +22,18 @@ MOUSEKEY_ENABLE = no
 TERMINAL_ENABLE = no
 SPACE_CADET_ENABLE = no
 
-# Enable link time optimization for AVR
-ifneq ($(PLATFORM), CHIBIOS)
-	LTO_ENABLE = yes
-endif
+# Enable / Disable my personal features
+VIM_MODE_ENABLE = yes
+GAME_LAYER_ENABLE = yes
 
 # Keyboard specific configurations
 #
 ####
+
+# Enable link time optimization for AVR
+ifneq ($(PLATFORM), CHIBIOS)
+	LTO_ENABLE = yes
+endif
 
 # XD68
 ifeq ($(strip $(KEYBOARD)), xd68)
@@ -60,3 +64,11 @@ ifneq ($(strip $(NO_SECRETS)), yes)
 endif
 
 #GAME_LAYER_ENABLE = yes
+VIMMODE_ENABLE = yes
+# enable vim mode
+ifeq ($(strip $(VIM_MODE_ENABLE)), yes)
+    ifneq ("$(wildcard $(USER_PATH)/vim_mode.c)","")
+        SRC += vim_mode.c
+        OPT_DEFS += -DVIM_MODE_ENABLE
+    endif
+endif

@@ -20,6 +20,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "version.h"
 #include "quantum.h"
 
+#ifdef VIM_MODE_ENABLE
+    #include "vim_mode.h"
+#endif
+
 #ifndef SEC_MACROS
     #define SEC_MACROS  10
 #endif
@@ -36,7 +40,11 @@ enum userspace_layers {
 #endif
     _NAV,           // Navigation layer with some vim key bindings
     _FNC,           // Function Layer
-    _ADJ            // Control Layer
+    _ADJ,           // Control Layer
+#ifdef VIM_MODE_ENABLE
+    _VIM,           // VIM CMD layer
+#endif
+    _RESET
 };
 
 //define user keycodes
@@ -61,9 +69,9 @@ enum userspace_keycodes {
     #define TG_GAME KC_NO
 #endif
 
-#define KC_SPC1     LT(_NAV,KC_SPC)
-#define KC_SPC2     LT(_NUM,KC_ENT)
-#define KC_SPC3     SH_T(KC_BSPC)
+#define BS_SPC1     LT(_NAV,KC_SPC)
+#define BS_SPC2     LT(_NUM,KC_ENT)
+#define BS_SPC3     SH_T(KC_BSPC)
 
 #define NV_SPC1     KC_SPC
 #define NV_SPC2     KC_ENT
@@ -81,6 +89,12 @@ enum userspace_keycodes {
 #define MY_CPY      LCTL(KC_INS)
 #define MY_WFWD     LCTL(KC_RGHT)
 #define MY_WBKW     LCTL(KC_LEFT)
+
+#ifdef VIM_MODE_ENABLE
+    #define MY_ESC  VIM_START
+#else
+    #define MY_ESC  KC_GESC
+#endif
 
 #ifndef TEMPLATE
     #define _X_ KC_NO

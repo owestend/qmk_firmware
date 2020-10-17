@@ -19,6 +19,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 uint16_t cmd_buf = KC_NO;
 uint16_t no_buf = 0;
+bool shifted = false;
 
 uint16_t const move_kc[(1 + (VIM_X - VIM_H))] = {
     OS_KC_LEFT,
@@ -30,6 +31,9 @@ uint16_t const move_kc[(1 + (VIM_X - VIM_H))] = {
     OS_KC_BACK,
     OS_KC_DEL
 };
+
+#define END_CMD()       { no_buf = 0; cmd_buf = KC_NO; shifted = false;}
+#define INSERT_MODE()   { END_CMD(); layer_off(_VIM); }
 
 void do_command(void) {
     switch (cmd_buf) {
@@ -55,10 +59,23 @@ void do_command(void) {
 }
 
 bool process_record_vim_mode(uint16_t keycode, keyrecord_t *record) {
-    bool shifted = (get_mods() & MOD_MASK_SHIFT);
 
     switch (keycode) {
+// VIM_START
+        case VIM_START:
+            // switch to VIM command layer
+            layer_on(_VIM);
 
+            // reset state
+            END_CMD();
+
+            return false;
+            break;
+// Shift
+        case VIM_SHIFT:
+            shifted = record->event.pressed;
+            return false;
+            break;
 // Movements            h j k l e w b x
         case VIM_H ... VIM_X:
             if (record->event.pressed) {
@@ -72,19 +89,16 @@ bool process_record_vim_mode(uint16_t keycode, keyrecord_t *record) {
                         END_CMD();
                     }
                 }
-
                 if (keycode == VIM_X) {         // x will done with d as command and l as movement
                     if (cmd_buf != KC_NO) {
                         END_CMD();
                     }
-                    // keycode = VIM_L;
-                    // cmd_buf = VIM_D;
+                    keycode = VIM_L;
+                    cmd_buf = VIM_D;
                 }
-
                 if (no_buf < 1) {
                     no_buf = 1;
                 }
-
                 if (cmd_buf != KC_NO) {
                     OS_MARK_ON();
                 }
@@ -107,7 +121,6 @@ bool process_record_vim_mode(uint16_t keycode, keyrecord_t *record) {
             }
             return false;
             break;
-
 // Commands
         case VIM_C ... VIM_Y:
             if (record->event.pressed) {                // c d y C D Y
@@ -131,7 +144,7 @@ bool process_record_vim_mode(uint16_t keycode, keyrecord_t *record) {
             }
             return false;
             break;
-
+// visual mode
         case VIM_V:                                     // v
             if (record->event.pressed) {
                 if (cmd_buf != KC_NO) {
@@ -142,7 +155,6 @@ bool process_record_vim_mode(uint16_t keycode, keyrecord_t *record) {
             }
             return false;
             break;
-
 // Numbers
         case VIM_0 ... VIM_9:
             if (record->event.pressed) {
@@ -171,7 +183,6 @@ bool process_record_vim_mode(uint16_t keycode, keyrecord_t *record) {
             }
             return false;
             break;
-
 // Insert Mode
         case VIM_I ... VIM_S:                       // a A i I o O s S
             if (record->event.pressed) {
@@ -221,7 +232,6 @@ bool process_record_vim_mode(uint16_t keycode, keyrecord_t *record) {
             }
             return false;
             break;
-
 // Paste
         case VIM_P:
             if (record->event.pressed) {
@@ -248,7 +258,7 @@ bool process_record_vim_mode(uint16_t keycode, keyrecord_t *record) {
             }
             return false;
             break;
-
+// End
         default:
             return true;
 

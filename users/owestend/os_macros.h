@@ -17,9 +17,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "owestend.h"
 #pragma once
 
-#define END_CMD()       { no_buf = 0; cmd_buf = KC_NO; }
-#define INSERT_MODE()   { END_CMD(); layer_off(_VIM); }
-
 // move char
 #define OS_KC_RIGHT     KC_RIGHT
 #define OS_KC_DOWN      KC_DOWN
@@ -76,7 +73,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define OS_COPY()       { tap_code16(LCTL(KC_C)); }
 #define OS_PASTE()      { tap_code16(LCTL(KC_V)); }
 */
-
 
 // undo/redo
 #define OS_UNDO()       { tap_code16(LCTL(KC_Z)); }

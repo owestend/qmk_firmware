@@ -56,12 +56,24 @@ enum userspace_keycodes {
     NEW_SAFE_RANGE
 };
 
-#define CTL_ESC     CTL_T(KC_ESC)
+#define CTL_ESC     LCTL_T(KC_ESC)
 
 #define MO_NAV      MO(_NAV)
 #define MO_FNC      MO(_FNC)
 #define MO_ADJ      MO(_ADJ)
 #define MO_RST      MO(_RESET)
+
+#ifndef ARROW_KEYS
+    #define BS_RCTL MT(MOD_RCTL,KC_RIGHT)
+    #define BS_RGUI MT(MOD_RGUI,KC_DOWN)
+    #define BS_FNC  LT(_FNC,KC_LEFT)
+    #define BS_RSFT MT(MOD_RSFT,KC_UP)
+#else
+    #define BS_RCTL KC_RCTL
+    #define BS_RGUI KC_RGUI
+    #define BS_FNC  MO_FNC
+    #define BS_RSFT KC_RSFT
+#endif
 
 #ifdef GAME_LAYER_ENABLE
     #define TG_GAME TG(_GAME)

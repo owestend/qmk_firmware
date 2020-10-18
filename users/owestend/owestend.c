@@ -52,8 +52,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         RESET  , SEC_M(0),SEC_M(1),SEC_M(2),SEC_M(3),SEC_M(4),SEC_M(5),SEC_M(6),SEC_M(7),SEC_M(8),SEC_M(9),_______, _______, _______, _______,
         _______, _______, _______, EEP_RST, RESET  , _______, _______, _______, _______, _______, _______, _______, _______, _______,
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______,
-        _______,          _______, _______, _______, KC_VRSN, _______, _______, KC_MAKE, _______, _______, _______,          KC_UP  , _______,
-        _______, _______, TG_GAME,                   AD_SPC2, AD_SPC1, AD_SPC3,                   _______, KC_LEFT, KC_DOWN, KC_RGHT),
+        _______,          _______, _______, _______, KC_VRSN, _______, _______, KC_MAKE, _______, _______, _______,          AD_RSFT  , _______,
+        _______, _______, TG_GAME,                   AD_SPC2, AD_SPC1, AD_SPC3,                   _______, AD_FNC, AD_RGUI, AD_RCTL),
 #ifdef VIM_MODE_ENABLE
     [_VIM] = TEMPLATE_VIM_MODE,
 #endif

@@ -23,7 +23,7 @@ TERMINAL_ENABLE = no
 SPACE_CADET_ENABLE = no
 
 # Enable / Disable my personal features
-VIM_MODE_ENABLE = yes
+VIM_MODE_ENABLE = no
 GAME_LAYER_ENABLE = yes
 
 # Keyboard specific configurations

@@ -33,4 +33,4 @@ HD44780_ENABLE = no         # Enable support for HD44780 based LCDs
 
 LAYOUTS = 60_ansi 60_ansi_split_bs_rshift 60_ansi_tsangan 60_hhkb 60_iso 60_iso_split_bs_rshift 60_iso_tsangan
 
-DEFAULT_FOLDER = yd60mq/12led
+DEFAULT_FOLDER = yd60mq/noled

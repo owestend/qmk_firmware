@@ -35,6 +35,12 @@ ifneq ($(PLATFORM), CHIBIOS)
 	LTO_ENABLE = yes
 endif
 
+# XD60
+ifeq ($(findstring xd60, $(KEYBOARD)), xd60)
+	BACKLIGHT_ENABLE = no		# Dissable keyboard bachlight
+	RGBLIGHT_ENABLE = no		# Dissable keyboard RGB underglow
+endif
+
 # XD68
 ifeq ($(strip $(KEYBOARD)), xd68)
 	BACKLIGHT_ENABLE = no		# Dissable keyboard bachlight

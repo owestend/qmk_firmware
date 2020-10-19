@@ -1,0 +1,1 @@
+DEFAULT_FOLDER = xd60/rev3

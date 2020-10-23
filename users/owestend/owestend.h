@@ -24,12 +24,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     #include "vim_mode.h"
 #endif
 
-#ifndef SEC_MACROS
-    #define SEC_MACROS  10
-#endif
-
-#if (SEC_MACROS > 0)
-    #define SEC_M(x)    (KC_SEC + x)
+#ifndef NO_SECRETS
+    #include "secrets.h"
 #endif
 
 // define layers in this userspace, I use this layers in all my ansi boards
@@ -51,8 +47,6 @@ enum userspace_layers {
 enum userspace_keycodes {
     KC_VRSN = SAFE_RANGE,
     KC_MAKE,
-    KC_SEC,
-    KC_SEC_MAX = KC_SEC + SEC_MACROS - 1,
     NEW_SAFE_RANGE
 };
 

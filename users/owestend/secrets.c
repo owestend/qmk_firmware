@@ -16,19 +16,51 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "owestend.h"
 
-#if (__has_include("secrets.h") && !defined(NO_SECRETS))
-#include "secrets.h"
-#else
-const char sec01[] PROGMEM = "test1";
-const char sec02[] PROGMEM = "test2";
-const char sec03[] PROGMEM = "test3";
-const char sec04[] PROGMEM = "test4";
-const char sec05[] PROGMEM = "test5";
-const char sec06[] PROGMEM = "test6";
-const char sec07[] PROGMEM = "test7";
-const char sec08[] PROGMEM = "test8";
-const char sec09[] PROGMEM = "test9";
-const char sec10[] PROGMEM = "test10";
+#if (__has_include("secret_macros.h") && !defined(NO_SECRETS))
+#include "secret_macros.h"
+#endif
+
+#ifndef SEC_01
+    #define SEC_01  "test01"
+#endif
+#ifndef SEC_02
+    #define SEC_02  "test02"
+#endif
+#ifndef SEC_03
+    #define SEC_03  "test03"
+#endif
+#ifndef SEC_04
+    #define SEC_04  "test04"
+#endif
+#ifndef SEC_05
+    #define SEC_05  "test05"
+#endif
+#ifndef SEC_06
+    #define SEC_06  "test06"
+#endif
+#ifndef SEC_07
+    #define SEC_07  "test07"
+#endif
+#ifndef SEC_08
+    #define SEC_08  "test08"
+#endif
+#ifndef SEC_09
+    #define SEC_09  "test09"
+#endif
+#ifndef SEC_10
+    #define SEC_10  "test10"
+#endif
+
+const char sec01[] PROGMEM = SEC_01;
+const char sec02[] PROGMEM = SEC_02;
+const char sec03[] PROGMEM = SEC_03;
+const char sec04[] PROGMEM = SEC_04;
+const char sec05[] PROGMEM = SEC_05;
+const char sec06[] PROGMEM = SEC_06;
+const char sec07[] PROGMEM = SEC_07;
+const char sec08[] PROGMEM = SEC_08;
+const char sec09[] PROGMEM = SEC_09;
+const char sec10[] PROGMEM = SEC_10;
 
 const char * const secrets[] =
 {
@@ -43,7 +75,6 @@ const char * const secrets[] =
     sec09,
     sec10
 };
-#endif
 
 bool process_record_secrets(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {

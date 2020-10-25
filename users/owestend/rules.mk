@@ -25,6 +25,7 @@ SPACE_CADET_ENABLE = no
 # Enable / Disable my personal features
 VIM_MODE_ENABLE = no
 GAME_LAYER_ENABLE = yes
+#  NO_SECRETS = no
 
 # Keyboard specific configurations
 #

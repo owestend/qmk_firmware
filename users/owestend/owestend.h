@@ -20,12 +20,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "version.h"
 #include "quantum.h"
 
+// Secrets
+#include "secrets.h"
+
+// VIM_MODE
 #ifdef VIM_MODE_ENABLE
     #include "vim_mode.h"
-#endif
-
-#ifndef NO_SECRETS
-    #include "secrets.h"
 #endif
 
 // define layers in this userspace, I use this layers in all my ansi boards

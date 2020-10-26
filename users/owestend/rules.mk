@@ -70,12 +70,16 @@ ifneq ($(strip $(NO_SECRETS)), yes)
     endif
 endif
 
-#GAME_LAYER_ENABLE = yes
-VIMMODE_ENABLE = yes
 # enable vim mode
 ifeq ($(strip $(VIM_MODE_ENABLE)), yes)
 #    ifneq ("$(wildcard $(USER_PATH)/vim_mode.c)","")
         SRC += vim_mode.c
         OPT_DEFS += -DVIM_MODE_ENABLE
 #    endif
+endif
+
+
+# enable game layer
+ifeq ($(strip $(GAME_LAYER_ENABLE)), yes)
+	OPT_DEFS += -DGAME_LAYER_ENABLE
 endif

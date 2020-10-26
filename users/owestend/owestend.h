@@ -82,7 +82,7 @@ enum userspace_keycodes {
 #ifdef GAME_LAYER_ENABLE
     #define TG_GAME     TG(_GAME)
 #else
-    #define TG_GAME     KC_NO
+    #define TG_GAME     KC_TRNS
 #endif
 
 #define     BS_SPC1     LT(_NAV,KC_SPC)

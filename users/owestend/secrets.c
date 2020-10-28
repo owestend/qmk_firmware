@@ -20,37 +20,38 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "secret_macros.h"
 #endif
 
+#ifndef SEC_00
+    #define SEC_00  "sec00"
+#endif
 #ifndef SEC_01
-    #define SEC_01  "test01"
+    #define SEC_01  "sec01"
 #endif
 #ifndef SEC_02
-    #define SEC_02  "test02"
+    #define SEC_02  "sec02"
 #endif
 #ifndef SEC_03
-    #define SEC_03  "test03"
+    #define SEC_03  "sec03"
 #endif
 #ifndef SEC_04
-    #define SEC_04  "test04"
+    #define SEC_04  "sec04"
 #endif
 #ifndef SEC_05
-    #define SEC_05  "test05"
+    #define SEC_05  "sec05"
 #endif
 #ifndef SEC_06
-    #define SEC_06  "test06"
+    #define SEC_06  "sec06"
 #endif
 #ifndef SEC_07
-    #define SEC_07  "test07"
+    #define SEC_07  "sec07"
 #endif
 #ifndef SEC_08
-    #define SEC_08  "test08"
+    #define SEC_08  "sec08"
 #endif
 #ifndef SEC_09
-    #define SEC_09  "test09"
-#endif
-#ifndef SEC_10
-    #define SEC_10  "test10"
+    #define SEC_09  "sec09"
 #endif
 
+const char sec00[] PROGMEM = SEC_00;
 const char sec01[] PROGMEM = SEC_01;
 const char sec02[] PROGMEM = SEC_02;
 const char sec03[] PROGMEM = SEC_03;
@@ -60,10 +61,10 @@ const char sec06[] PROGMEM = SEC_06;
 const char sec07[] PROGMEM = SEC_07;
 const char sec08[] PROGMEM = SEC_08;
 const char sec09[] PROGMEM = SEC_09;
-const char sec10[] PROGMEM = SEC_10;
 
 const char * const secrets[] =
 {
+    sec00,
     sec01,
     sec02,
     sec03,
@@ -72,8 +73,7 @@ const char * const secrets[] =
     sec06,
     sec07,
     sec08,
-    sec09,
-    sec10
+    sec09
 };
 
 bool process_record_secrets(uint16_t keycode, keyrecord_t *record) {

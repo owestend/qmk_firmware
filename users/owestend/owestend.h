@@ -63,20 +63,20 @@ enum userspace_keycodes {
     #define BS_FNC      LT(_FNC,KC_LEFT)
     #define BS_RSFT     MT(MOD_RSFT,KC_UP)
 
-    #define AD_RCTL     KC_RIGHT
-    #define AD_RGUI     KC_DOWN
-    #define AD_FNC      KC_LEFT
-    #define AD_RSFT     KC_UP
+    #define NV_RCTL     KC_RIGHT
+    #define NV_RGUI     KC_DOWN
+    #define NV_FNC      KC_LEFT
+    #define NV_RSFT     KC_UP
 #else
     #define BS_RCTL     KC_RCTL
     #define BS_RGUI     KC_RGUI
     #define BS_FNC      MO_FNC
     #define BS_RSFT     KC_RSFT
 
-    #define AD_RCTL     KC_TRNS
-    #define AD_RGUI     KC_TRNS
-    #define AD_FNC      KC_TRNS
-    #define AD_RSFT     KC_TRNS
+    #define NV_RCTL     KC_TRNS
+    #define NV_RGUI     KC_TRNS
+    #define NV_FNC      KC_TRNS
+    #define NV_RSFT     KC_TRNS
 #endif
 
 #ifdef GAME_LAYER_ENABLE
@@ -112,7 +112,7 @@ enum userspace_keycodes {
     #define MY_ESC      KC_GESC
 #endif
 
-#define     MY_PGDN     LT(_ADJ,KC_PGDN)
+#define     MY_PGDN     LT(_NAV,KC_PGDN)
 
 #ifndef TEMPLATE
     #define _X_ KC_NO

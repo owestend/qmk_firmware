@@ -1,7 +1,7 @@
 //#include QMK_KEYBOARD_CONFIG_H
 
-//#define SPLIT_BS
-//#define SPLIT_RSHIFT
+#define SPLIT_BS
+#define SPLIT_RSHIFT
 //#define ARROW_KEYS
 
 #define TEMPLATE_TKL( \

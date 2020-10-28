@@ -35,14 +35,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_LCTL, KC_LGUI, KC_LALT,                   KC_SPC , BS_SPC1, KC_SPC ,                   KC_RALT, MO_FNC , KC_RGUI, KC_RCTL),
 #endif
     [_NAV] = TEMPLATE(
-        RESET  , _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_DEL , _______,
+        KC_GRV , _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_DEL , _______,
         _______, _______, MY_WFWD, _______, _______, _______, MY_CPY , KC_BSPC, KC_INS , _______, MY_PST , _______, _______, KC_INS ,
         _______, KC_HOME, KC_PGDN, KC_PGUP, KC_END , KC_ENT , KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, _______, _______,          _______,
         _______,          _______, _______, _______, _______, MY_WBKW, KC_DEL , _______, KC_VOLD, KC_VOLU, KC_MUTE,          NV_RSFT, _______,
         _______, _______, _______,                   NV_SPC2, NV_SPC1, NV_SPC3,                   MO_ADJ , NV_FNC , NV_RGUI, NV_RCTL),
 
     [_FNC] = TEMPLATE(
-        RESET  , KC_F1  , KC_F2  , KC_F3  , KC_F4  , KC_F5  , KC_F6  , KC_F7  , KC_F8  , KC_F9  , KC_F10 , KC_F11 , KC_F12 , KC_DEL , _______,
+        KC_GRV , KC_F1  , KC_F2  , KC_F3  , KC_F4  , KC_F5  , KC_F6  , KC_F7  , KC_F8  , KC_F9  , KC_F10 , KC_F11 , KC_F12 , KC_DEL , _______,
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_MPLY, KC_MPRV, KC_MNXT, KC_INS ,
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______,
         _______,          _______, _______, _______, _______, _______, _______, _______, KC_VOLD, KC_VOLU, KC_MUTE,          _______, _______,

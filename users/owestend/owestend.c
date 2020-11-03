@@ -69,6 +69,8 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
         case BS_FNC:
         case BS_RSFT:
             return TAPPING_TERM_ARROWS;
+        case CTL_ESC:
+            return TAPPING_TERM_CTL_ESC;
         default:
             return TAPPING_TERM;
     }

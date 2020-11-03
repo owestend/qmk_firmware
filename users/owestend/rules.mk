@@ -25,7 +25,7 @@ SPACE_CADET_ENABLE = no
 # Enable / Disable my personal features
 VIM_MODE_ENABLE = no
 GAME_LAYER_ENABLE = yes
-#  NO_SECRETS = no
+# NO_SECRETS = no
 
 # Keyboard specific configurations
 #
@@ -77,7 +77,6 @@ ifeq ($(strip $(VIM_MODE_ENABLE)), yes)
         OPT_DEFS += -DVIM_MODE_ENABLE
 #    endif
 endif
-
 
 # enable game layer
 ifeq ($(strip $(GAME_LAYER_ENABLE)), yes)

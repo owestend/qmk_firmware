@@ -81,7 +81,8 @@ bool process_record_secrets(uint16_t keycode, keyrecord_t *record) {
         case KC_SEC ... KC_SEC_MAX: // Secrets!  Externally defined strings, not stored in repo
         if (!record->event.pressed) {
             clear_oneshot_layer_state(ONESHOT_OTHER_KEY_PRESSED);
-            send_string_with_delay_P(secrets[keycode - KC_SEC], MACRO_DELAY);
+            //send_string_with_delay_P(secrets[keycode - KC_SEC], MACRO_DELAY);
+            send_string_P(secrets[keycode - KC_SEC]);
         }
         return false;
         break;

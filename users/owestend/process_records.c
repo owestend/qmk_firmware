@@ -30,25 +30,28 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 // uint8_t temp_osm = get_oneshot_mods();
                 clear_mods();
                 clear_oneshot_mods();
-                send_string_with_delay_P(PSTR(QMK_KEYBOARD "/" QMK_KEYMAP " @ " QMK_VERSION ", Built on: " QMK_BUILDDATE), MACRO_DELAY);
+                SEND_STRING(QMK_KEYBOARD "/" QMK_KEYMAP " @ " QMK_VERSION ", Built on: " QMK_BUILDDATE);
                 set_mods(temp_mod);
             }
             break;
         case KC_MAKE: // Compile the firmware
             if (!record->event.pressed) {
+                bool reset = false;
                 uint8_t temp_mod = get_mods();
                 uint8_t temp_osm = get_oneshot_mods();
                 clear_mods();
                 clear_oneshot_mods();
-                send_string_with_delay_P(PSTR("make " QMK_KEYBOARD ":" QMK_KEYMAP), MACRO_DELAY);
+                SEND_STRING("make " QMK_KEYBOARD ":" QMK_KEYMAP);
                 if ((temp_mod | temp_osm) & MOD_MASK_SHIFT) {
-                    send_string_with_delay_P(PSTR(":flash"), MACRO_DELAY);
+                    SEND_STRING(":flash");
+                    reset = true;
                 }
                 if ((temp_mod | temp_osm) & MOD_MASK_CTRL) {
-                    send_string_with_delay_P(PSTR(" -j8 --output-sync"), MACRO_DELAY);
+                    SEND_STRING(" -j8 --output-sync");
                 }
                 tap_code(KC_ENT);
                 set_mods(temp_mod);
+                if (reset) reset_keyboard();
             }
             break;
     }

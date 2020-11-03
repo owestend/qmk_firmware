@@ -58,3 +58,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_VIM] = TEMPLATE_VIM_MODE,
 #endif
 };
+
+// indiviual TAPPIING_TERMs for different keycodes
+uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case BS_SPC1:                   // Space
+            return TAPPING_TERM_SPC;
+        case BS_RCTL:                   // arrows on non arrow keyboards
+        case BS_RGUI:
+        case BS_FNC:
+        case BS_RSFT:
+            return TAPPING_TERM_ARROWS;
+        default:
+            return TAPPING_TERM;
+    }
+}

@@ -33,6 +33,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 SEND_STRING(QMK_KEYBOARD "/" QMK_KEYMAP " @ " QMK_VERSION ", Built on: " QMK_BUILDDATE);
                 set_mods(temp_mod);
             }
+            return false;
             break;
         case KC_MAKE: // Compile the firmware
             if (!record->event.pressed) {
@@ -52,6 +53,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 tap_code(KC_ENT);
                 set_mods(temp_mod);
                 if (reset) reset_keyboard();
+            }
+            return false;
+            break;
+        case KC_B:  // reset keyboard with both shift and b
+            if (record->event.pressed) {
+                uint8_t temp_mod = get_mods();
+                if ((temp_mod & MOD_BIT(KC_LSHIFT)) && (temp_mod & MOD_BIT(KC_RSHIFT))) {
+                    reset_keyboard();
+                    return false;
+                }
             }
             break;
     }
